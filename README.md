@@ -1,4 +1,6 @@
-It was 2023. I was making a replica of ChatGPT, and I spent a week learning to stream chunks of text from the OpenAI API and rendering each chunk smoothly with CSS transitions. It was laborious!
+# How to build a Qwen chatbot with Vercel AI SDK and Modal
+
+Two years ago is decades ago in AI Land. Back then, I was learning to stream chunks of text from the OpenAI API and rendering each chunk smoothly with CSS transitions. It was laborious!
 
 Thankfully, there are new developer tools for building common LLM interfaces. It only took me a day to deploy a swanky chatbot running a Qwen-3B model using Vercel and Modal. 
 
@@ -12,9 +14,9 @@ The following tutorial will walk through the frontend and backend for a Qwen cha
 4. Building a chat interface with Vercel's AI Elements
 
 Let's start with some project scaffolding:
-```
-mkdir ai-chatbot 
-cd ai-chatbot
+```bash
+mkdir my-chatbot 
+cd my-chatbot
 mkdir backend
 cd backend
 ```
@@ -107,36 +109,42 @@ def serve():
 To deploy the API on Modal, just run: 
  
 ``` bash
-modal deploy vllm_inference.py
+python -m  modal deploy vllm-inference.py
+```
+
+If you haven't installed Modal's CLI, create an account on [modal.com](modal.com). 
+``` bash
+# Optional steps if you run into python versioning issues
+uv venv --python 3.11 .venv --prompt modal
+source .venv/bin/activate
+python3.11 -m ensurepip --upgrade
+
+# Install Modal and connect your account
+python -m pip install modal
+modal setup
 ```
 
 Once it is deployed, you’ll see a URL appear in the command line, something like https://your-workspace-name--example-vllm-inference-serve.modal.run.
 
-If you haven't installed Modal's CLI, create an account on [modal.com](modal.com) then run the following:
-``` bash
-pip install modal
-modal setup
-```
-
 # 2. Using Vercel's AI SDK to connect to Modal
 
-Now onto the frontend! Start by creating a NextJS app. 
+Now onto the frontend! Start by creating a NextJS app using the defaults.
 
 ```bash
-cd ../frontend
+cd ..
 pnpm create next-app@latest frontend
+cd frontend
 ```
 
 Then install the [OpenAI Compatible provider](https://ai-sdk.dev/providers/openai-compatible-providers#openai-compatible-providers) from Vercel's AI SDK, which we will use to connect to the Qwen-3B model running on Modal
 
 ```bash
-pnpm add @ai-sdk/openai-compatible
+pnpm add ai @ai-sdk/openai-compatible
 ```
 
 In the `app` folder, create a `/chat` route by creating a `app/api/chat/route.ts` file with the following nested folders. Then paste the following code:
 
 ```ts
-// app/api/chat/route.ts
 import { NextRequest } from 'next/server';
 import { streamText, convertToModelMessages, type UIMessage } from 'ai';
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
@@ -179,7 +187,7 @@ Install AI Elements and the AI SDK Dependencies:
 
 ```bash
 npx ai-elements@latest
-pnpm add ai @ai-sdk/react zod
+pnpm add @ai-sdk/react zod
 ```
 
 In your `app/page.tsx`, replace the code with the file below.
