@@ -2,6 +2,8 @@
 
 It only took me a day to deploy this swanky chatbot running a Qwen-3B model using Vercel and Modal:
 
+https://github.com/user-attachments/assets/1f185fe5-62e1-4eca-893e-8789988165ff
+
 
 The following tutorial will walk through the frontend and backend for a Qwen chatbot in three simple steps:
 1. Deploying the Qwen-3B model on Modal
