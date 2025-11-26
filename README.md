@@ -390,3 +390,9 @@ const ChatBotDemo = () => {
 };
 export default ChatBotDemo;
 ```
+
+Now, you can play with a fully-fledged chatbot running the Qwen-3B model by running `npm run dev`.
+
+```bash
+npm run dev
+```
