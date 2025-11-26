@@ -1,12 +1,7 @@
 # How to build a Qwen chatbot with Vercel AI SDK and Modal
 
-Two years ago is decades ago in AI Land. Back then, I was learning to stream chunks of text from the OpenAI API and rendering each chunk smoothly with CSS transitions. It was laborious!
+It only took me a day to deploy this swanky chatbot running a Qwen-3B model using Vercel and Modal:
 
-Thankfully, there are new developer tools for building common LLM interfaces. It only took me a day to deploy a swanky chatbot running a Qwen-3B model using Vercel and Modal. 
-
-<video controls autoplay loop muted playsinline>
-  <source src="../assets/blog/vercel-modal-chatbot.mov" type="video/quicktime">
-</video>
 
 The following tutorial will walk through the frontend and backend for a Qwen chatbot in three simple steps:
 1. Deploying the Qwen-3B model on Modal
