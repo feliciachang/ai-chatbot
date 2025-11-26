@@ -1,4 +1,4 @@
-# How to build a Qwen chatbot with Vercel AI SDK and Modal
+# Out-of-the-box chatbot Vercel AI SDK and Modal
 
 It only took me a day to deploy this swanky chatbot running a Qwen-3B model using Vercel and Modal:
 
